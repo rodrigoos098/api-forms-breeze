@@ -9,3 +9,7 @@ Route::get('/banana', [Banana::class, 'banana']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/banana', [Banana::class, 'banana']);
+});
